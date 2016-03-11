@@ -1,9 +1,17 @@
 {
   "name": "treeselect",
-  "main": [ "./src/jquery-treeselect.js"],
+  "main": [
+    "./src/jquery-treeselect.js"
+  ],
   "authors": [
-    { "name": "Jan Essbach", "email": "essbach@imoveit.de" },
-    { "name": "Elisa Baum", "email": "baum@imoveit.de" }
+    {
+      "name": "Jan Essbach",
+      "email": "essbach@imoveit.de"
+    },
+    {
+      "name": "Elisa Baum",
+      "email": "baum@imoveit.de"
+    }
   ],
   "ignore": [
     ".idea",
@@ -17,8 +25,10 @@
     "*SpecRunner.html"
   ],
   "dependencies": {
-    "jasmine": "2.1.2",
-    "jasmine-jquery": "^2.1.1",
-    "jquery": "^2.2.1"
+    "jquery": "~1.9.1"
+  },
+  "devDependencies": {
+    "jasmine": "2.4.1",
+    "jasmine-jquery": "1.7.0"
   }
 }
