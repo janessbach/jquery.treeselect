@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "ignore": [
     ".idea",
+    "bower_components",
     "spec",
     ".git*",
     "*bower.json",
     "*demo.html",
-    "jqueryPlugin.iml",
+    "jquery.treeselect.iml",
     "README*",
     "*SpecRunner.html"
   ],
