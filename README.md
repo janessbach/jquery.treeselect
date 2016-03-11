@@ -6,9 +6,9 @@ This jquery plugin helps you to easily create complex interactive forms based on
 Example: Building forms
 =========
 
-As seen in the figure 1 the `Profession` select builds up the root of our form tree. It includes two nodes (key: 1, key:2) that have their own dependencies. 
+As seen in the figure 1 the `Profession` select builds up the root of the form tree. It includes two nodes (key: 1, key:2) that have their own dependencies.
 
-The nodes with the same `elementName` and are grouped into one `select` for the view.
+The nodes with the same `elementName` are grouped into one `select` for the view.
 
 <img src="https://raw.githubusercontent.com/janessbach/jquery.treeselect/master/docs/img/jQuery.treeselect.png" width="600">
 
@@ -26,7 +26,7 @@ var json = {
         "select.default" : "Bitte wählen",
         "profession" : "Beruf",
         "place" : "Ort",
-        "sallary" : "Gehalt",
+        "salary" : "Gehalt",
         "company" : "Firma"
     },
     "dependencyList": [{
@@ -52,7 +52,7 @@ var json = {
         "typ": "select"
     }, {
         "key": 4,
-        "elementName": "sallary",
+        "elementName": "salary",
         "values": ["1000", "2000"],
         "dependencies": [],
         "required": false,
@@ -81,7 +81,7 @@ The `translations` are used to define the label values for the `elementNames`. T
 
 Each node defines a unique `key` for this form. This key can be used by other elements to define dependencies. The `elementName` is the name of the created HTML element.
 
-The `typ` can be one of `select`, `input` or `file`. Its clear that your root should only by of type `select`.
+The `typ` can be one of `select`, `input` or `upload`. Its clear that your root should only by of type `select`.
 
 Links
 =====

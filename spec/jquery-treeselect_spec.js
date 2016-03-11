@@ -11,7 +11,7 @@ describe("jquery-treeselect", function () {
                 "select.default" : "Bitte wählen",
                 "profession" : "Beruf",
                 "place" : "Ort",
-                "sallary" : "Gehalt",
+                "salary" : "Gehalt",
                 "company" : "Firma"
             },
             "dependencyList": [{
@@ -37,7 +37,7 @@ describe("jquery-treeselect", function () {
                 "typ": "select"
             }, {
                 "key": 4,
-                "elementName": "sallary",
+                "elementName": "salary",
                 "values": ["1000", "2000"],
                 "dependencies": [],
                 "required": false,
