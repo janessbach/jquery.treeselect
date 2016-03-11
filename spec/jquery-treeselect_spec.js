@@ -75,7 +75,7 @@ describe("jquery-treeselect", function () {
 
         place.val('Berlin').trigger('change');
 
-        var sallary = fixture.find('*[name=sallary]');
+        var sallary = fixture.find('*[name=salary]');
         expect(sallary.length).toBe(1);
 
     });
@@ -96,7 +96,7 @@ describe("jquery-treeselect", function () {
         place = fixture.find('*[name=place]');
         expect(place.length).toBe(0);
 
-        var sallary = fixture.find('*[name=sallary]');
+        var sallary = fixture.find('*[name=salary]');
         expect(sallary.length).toBe(0);
 
     });
