@@ -1,4 +1,4 @@
-jQuery TreeSelect Plugin - v1.0.0 
+jQuery TreeSelect Plugin
 =========================
 
 This jquery plugin helps you to easily create complex interactive forms based on a dependency graph.
