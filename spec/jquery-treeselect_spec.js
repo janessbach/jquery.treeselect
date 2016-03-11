@@ -8,7 +8,7 @@ describe("jquery-treeselect", function () {
         json = {
             "groupKey": "profession",
             "translations" : {
-                "select.default" : "Bitte wählen",
+                "select.default" : "Please select",
                 "profession" : "Profession",
                 "city" : "City",
                 "company" : "Company",
@@ -69,15 +69,15 @@ describe("jquery-treeselect", function () {
         var rootElement = fixture.find('*[name=profession]');
         expect(rootElement.length).toBe(1);
 
-        rootElement.val('Arzt').trigger('change');
+        rootElement.val('Doctor').trigger('change');
 
-        var place = fixture.find('*[name=place]');
-        expect(place.length).toBe(1);
+        var city = fixture.find('*[name=city]');
+        expect(city.length).toBe(1);
 
-        place.val('Berlin').trigger('change');
+        city.val('Berlin').trigger('change');
 
-        var sallary = fixture.find('*[name=salary]');
-        expect(sallary.length).toBe(1);
+        var upload = fixture.find('*[name=upload]');
+        expect(upload.length).toBe(1);
 
     });
 
@@ -85,23 +85,33 @@ describe("jquery-treeselect", function () {
 
         fixture.treeSelect({"data" : json});
 
-        var rootElement = fixture.find('*[name=profession]');
-        rootElement.val('Arzt').trigger('change');
+        var rootElement = fixture.find('select[name=profession]');
+        expect(rootElement.length).toBe(1);
 
-        var place = fixture.find('*[name=place]');
-        place.val('Berlin').trigger('change');
+        rootElement.val('Engineer').trigger('change');
+
+        var company = fixture.find('select[name=company]');
+        expect(company.length).toBe(1);
+
+        company.val('Google').trigger('change');
+
+        var upload = fixture.find('input[name=upload]');
+        expect(upload.length).toBe(1);
+
+        var website = fixture.find('input[name=website]');
+        expect(website.length).toBe(1);
 
         // reset root to default value
-        rootElement.val('Bitte wählen').trigger('change');
+        rootElement.val('Please select').trigger('change');
 
-        place = fixture.find('*[name=place]');
-        expect(place.length).toBe(0);
+        company = fixture.find('select[name=dompany]');
+        expect(company.length).toBe(0);
 
-        var sallary = fixture.find('*[name=salary]');
-        expect(sallary.length).toBe(0);
+        upload = fixture.find('input[name=upload]');
+        expect(upload.length).toBe(0);
 
+        website = fixture.find('input[name=website]');
+        expect(website.length).toBe(0);
     });
-
-
 
 });
