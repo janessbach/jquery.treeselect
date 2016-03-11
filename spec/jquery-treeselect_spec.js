@@ -9,52 +9,53 @@ describe("jquery-treeselect", function () {
             "groupKey": "profession",
             "translations" : {
                 "select.default" : "Bitte wählen",
-                "profession" : "Beruf",
-                "place" : "Ort",
-                "salary" : "Gehalt",
-                "company" : "Firma"
+                "profession" : "Profession",
+                "city" : "City",
+                "company" : "Company",
+                "website": "Website",
+                "upload" : "Upload"
             },
             "dependencyList": [{
                 "key": 1,
                 "elementName": "profession",
-                "values": ["Arzt"],
+                "values": ["Doctor"],
                 "dependencies": [3],
                 "required": true,
                 "typ": "select"
             }, {
                 "key": 2,
                 "elementName": "profession",
-                "values": ["Coder"],
-                "dependencies": [5],
-                "required": true,
-                "typ": "select"
-            }, {
-                "key": 3,
-                "elementName": "place",
-                "values": ["Amsterdam", "Berlin"],
+                "values": ["Engineer", "Designer"],
                 "dependencies": [4],
                 "required": true,
                 "typ": "select"
             }, {
-                "key": 4,
-                "elementName": "salary",
-                "values": ["1000", "2000"],
-                "dependencies": [],
-                "required": false,
-                "typ": "select"
-            }, {
-                "key": 5,
-                "elementName": "company",
-                "values": ["Google", "Facebook"],
-                "dependencies": [6],
+                "key": 3,
+                "elementName": "city",
+                "values": ["Amsterdam", "Berlin"],
+                "dependencies": [5],
                 "required": true,
                 "typ": "select"
             }, {
-                "key": 6,
+                "key": 4,
                 "elementName": "company",
+                "values": ["Google", "Facebook"],
+                "dependencies": [5, 6],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 5,
+                "elementName": "upload",
                 "values": [],
                 "dependencies": [],
                 "required": false,
+                "typ": "upload"
+            }, {
+                "key": 6,
+                "elementName": "website",
+                "values": [],
+                "dependencies": [],
+                "required": true,
                 "typ": "input"
             }]
         };

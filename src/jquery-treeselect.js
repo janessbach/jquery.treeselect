@@ -122,7 +122,7 @@
 
     DynamicSelectTree.prototype.createLabel = function(elementName, required) {
         var text = this.translations[elementName];
-        if (required) { text = text.concat(' *'); }
+        if (required) { text = text + ' *'; }
         return $('<label/>').addClass(this.options.labelClass).text(text);
     };
 
