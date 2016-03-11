@@ -2,13 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>jQuery tree selection demo site</title>
+    <title>jquery.treeselect demo</title>
 
-    <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.1.2/jasmine_favicon.png">
-    <link rel="stylesheet" href="lib/jasmine-2.1.2/jasmine.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../src/jquery-treeselect.js"></script>
+
+    <style>
+        .label {
+            color: #000;
+            font-size: 12px;
+        }
+    </style>
 
     <script>
         $(document).ready(function() {
@@ -16,7 +25,7 @@
             var json = {
                 "groupKey": "profession",
                 "translations" : {
-                    "select.default" : "Bitte wählen",
+                    "select.default" : "Please choose",
                     "profession" : "Profession",
                     "city" : "City",
                     "company" : "Company",
@@ -68,12 +77,20 @@
                 }]
             };
 
-            $('#my-fixture').treeSelect({data : json});
+            $('#my-fixture').treeSelect({"data" : json, "formElementClass" : "form-group"});
         });
     </script>
 
 </head>
 <body>
-    <div id="my-fixture"></div>
+    <div class="container">
+        <div class="page-header">
+            <h1>Demo page for jQuery.treeselect plugin</h1>
+        </div>
+        <div><img src="https://raw.githubusercontent.com/janessbach/jquery.treeselect/master/docs/img/jQuery.treeselect.png" width="600"></div>
+        <hr />
+        <div id="my-fixture"></div>
+        <p>* - required field</p>
+    </div>
 </body>
 </html>
