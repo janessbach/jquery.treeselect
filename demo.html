@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery tree selection demo site</title>
+
+    <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.1.2/jasmine_favicon.png">
+    <link rel="stylesheet" href="lib/jasmine-2.1.2/jasmine.css">
+
+    <script src="lib/jquery.js"></script>
+    <script src="src/jquery-treeselect.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var json = {
+                "groupKey": "profession",
+                "translations" : {
+                    "select.default" : "Bitte wählen",
+                    "profession" : "Beruf",
+                    "place" : "Ort",
+                    "sallary" : "Gehalt",
+                    "company" : "Firma"
+                },
+                "dependencyList": [{
+                    "key": 1,
+                    "elementName": "profession",
+                    "values": ["Arzt"],
+                    "dependencies": [3],
+                    "required": true,
+                    "typ": "select"
+                }, {
+                    "key": 2,
+                    "elementName": "profession",
+                    "values": ["Coder"],
+                    "dependencies": [5],
+                    "required": true,
+                    "typ": "select"
+                }, {
+                    "key": 3,
+                    "elementName": "place",
+                    "values": ["Amsterdam", "Berlin"],
+                    "dependencies": [4],
+                    "required": true,
+                    "typ": "select"
+                }, {
+                    "key": 4,
+                    "elementName": "sallary",
+                    "values": ["1000", "2000"],
+                    "dependencies": [],
+                    "required": false,
+                    "typ": "select"
+                }, {
+                    "key": 5,
+                    "elementName": "company",
+                    "values": ["Google", "Facebook"],
+                    "dependencies": [6],
+                    "required": true,
+                    "typ": "select"
+                }, {
+                    "key": 6,
+                    "elementName": "company",
+                    "values": [],
+                    "dependencies": [],
+                    "required": false,
+                    "typ": "input"
+                }]
+            };
+
+            $('#my-fixture').treeSelect({data : json});
+        });
+    </script>
+
+</head>
+<body>
+    <div id="my-fixture"></div>
+</body>
+</html>

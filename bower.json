@@ -1,0 +1,19 @@
+{
+  "name": "treeselect",
+  "version": "1.0.0",
+  "ignore": [
+    ".idea",
+    "spec",
+    ".git*",
+    "*bower.json",
+    "*demo.html",
+    "jqueryPlugin.iml",
+    "README*",
+    "*SpecRunner.html"
+  ],
+  "dependencies": {
+    "jasmine": "2.1.2",
+    "jasmine-jquery": "^2.1.1",
+    "jquery": "^2.2.1"
+  }
+}
