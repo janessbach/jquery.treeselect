@@ -4,10 +4,10 @@
   "ignore": [
     ".idea",
     "bower_components",
+    "docs",
     "spec",
     ".git*",
     "*bower.json",
-    "*demo.html",
     "jquery.treeselect.iml",
     "README*",
     "*SpecRunner.html"
