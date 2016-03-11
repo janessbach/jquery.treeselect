@@ -1,6 +1,10 @@
 {
   "name": "treeselect",
-  "version": "1.0.0",
+  "main": [ "./src/jquery-treeselect.js"],
+  "authors": [
+    { "name": "Jan Essbach", "email": "essbach@imoveit.de" },
+    { "name": "Elisa Baum", "email": "baum@imoveit.de" }
+  ],
   "ignore": [
     ".idea",
     "bower_components",
