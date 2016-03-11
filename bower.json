@@ -1,6 +1,7 @@
 {
   "name": "treeselect",
   "version": "1.0.0",
+  "main": [ "./src/jquery-treeselect.js"],
   "ignore": [
     ".idea",
     "bower_components",
