@@ -11,9 +11,11 @@
         defaults = {
             selectType          : 'select',
             inputType           : 'input',
+            uploadType          : 'upload',
             labelClass          : 'label',
             inputClass          : 'input',
             selectClass         : 'webform__select',
+            uploadClass         : 'upload',
             formElementClass    : 'formelement',
             data                : undefined
         };
@@ -57,6 +59,8 @@
             return this.createSelect(elementName, values, required);
         } else if (type === this.options.inputType) {
             return this.createInput(elementName, required);
+        } else if (type === this.options.uploadType) {
+            return this.createUpload(elementName, required);
         }
     };
 
@@ -111,15 +115,14 @@
         return $('<div/>').addClass(this.options.formElementClass).append(this.createLabel(elementName, required)).append(input);
     };
 
+    DynamicSelectTree.prototype.createUpload = function(elementName, required) {
+        var input = $('<input/>').attr('name', elementName).attr('type', 'file').addClass(this.options.uploadClass);
+        return $('<div/>').addClass(this.options.formElementClass).append(this.createLabel(elementName, required)).append(input);
+    };
+
     DynamicSelectTree.prototype.createLabel = function(elementName, required) {
         var text = this.translations[elementName];
-
-
-        if (required) { text = text + ' *'; }
-
-
-
-
+        if (required) { text = text.concat(' *'); }
         return $('<label/>').addClass(this.options.labelClass).text(text);
     };
 
