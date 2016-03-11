@@ -7,8 +7,6 @@
 .idea/
 # if you remove the above rule, at least ignore the following:
 
-bower_components/
-
 # User-specific stuff:
 # .idea/workspace.xml
 # .idea/tasks.xml
