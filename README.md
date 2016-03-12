@@ -20,7 +20,7 @@ The nodes with the same `elementName` are grouped into one [select](http://www.w
 
 The corresponding data structure to this form looks as follows:
 
-```
+```javascript
 var json = {
     "groupKey": "profession",
     "translations" : {
