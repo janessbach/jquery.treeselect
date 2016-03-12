@@ -104,7 +104,7 @@ describe("jquery-treeselect", function () {
         // reset root to default value
         rootElement.val('Please select').trigger('change');
 
-        company = fixture.find('select[name=dompany]');
+        company = fixture.find('select[name=company]');
         expect(company.length).toBe(0);
 
         upload = fixture.find('input[name=upload]');
