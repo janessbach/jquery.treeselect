@@ -1,25 +1,26 @@
 jQuery TreeSelect Plugin
 =========================
 
-This jquery plugin helps you to easily create complex interactive forms based on a dependency graph.
+TreeSelect is a plugin for creating complex context sensitive forms, where the content in a child `Select-box` heavily depends on the selected option of the parent.
+
+The plugin was designed with a select box as root element, and the child elements being any `type` of `select`, `input` or `upload`.
+
+Checkout the [Demo](http://htmlpreview.github.io/?https://github.com/janessbach/jquery.treeselect/blob/master/docs/demo.html).
 
 Example: Building forms
 =========
 
-As seen in the figure 1 the `Profession` select builds up the root of the form tree. It includes two nodes (key: 1, key:2) that have their own dependencies.
+Figure 1 as an example, has the option `Profession` selected, which acts as the root of the form tree. It includes two possible nodes (key: 1, key:2) that provide their own context for the following selections.
 
-The nodes with the same `elementName` are grouped into one `select` for the view.
+The nodes with the same `elementName` are grouped into one [select](http://www.w3schools.com/tags/tag_select.asp)-box.
 
 <img src="https://raw.githubusercontent.com/janessbach/jquery.treeselect/master/docs/img/jQuery.treeselect.png" width="600">
 
-**Figure 1:** Form example, with Profession consisting of two nodes
+**Figure 1:** Form example, with a `Parent` and two `child` nodes.
 
+The corresponding data structure to this form looks as follows:
 
-In this example we are designing the data structure for the form above. 
-
-Let me first show you the whole form and the corresponding json:
-
-```
+```javascript
 var json = {
     "groupKey": "profession",
     "translations" : {
@@ -76,13 +77,9 @@ var json = {
 };
 ```
 
-As seen in the json, it consists of three objects. The `groupKey` is used to group all available nodes that satisfy the condition `elementName === groupKey`. If you choose a value from this select, all dependencies will be traversed for the chosen node.
+As can be seen, the data structure consists of three main properties. The `groupKey`, which is used to group all available nodes that satisfy the condition `elementName === groupKey`. If you choose a value from this select, all dependencies will be traversed for the chosen node. The `translations`, which defines the label values for each `elementName` and the `dependencyList` that contains the form logic itself. 
 
-The `translations` are used to define the label values for the `elementNames`. The form logic itself is designed in `dependencyList`. This list consists of data structure `node`.
-
-Each node defines a unique `key` for this form. This key can be used by other elements to define dependencies. The `elementName` is the name of the created HTML element.
-
-The `typ` can be one of `select`, `input` or `upload`. Its clear that your root should only by of type `select`.
+The `dependencyList` list consists of `nodes`. Each node defines a unique `key` for this form. This key can be used by other elements to define dependencies. The `elementName` is the name of the created HTML element. The `typ` can be one of `select`, `input` or `upload`. It's clear that your root should only by of type `select`.
 
 Links
 =====
