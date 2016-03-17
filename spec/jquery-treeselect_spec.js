@@ -114,4 +114,42 @@ describe("jquery-treeselect", function () {
         expect(website.length).toBe(0);
     });
 
+    it("should also be able to use element names with `.` in their name.", function() {
+
+        json = {
+            "groupKey": "group.profession",
+            "translations" : {
+                "select.default" : "Please select",
+                "group.profession" : "Profession",
+                "group.city" : "City"
+            },
+            "dependencyList": [{
+                "key": 1,
+                "elementName": "group.profession",
+                "values": ["Doctor"],
+                "dependencies": [2],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 2,
+                "elementName": "group.city",
+                "values": ["Amsterdam", "Berlin"],
+                "dependencies": [5],
+                "required": true,
+                "typ": "select"
+            }]
+        };
+
+        fixture.treeSelect({"data" : json});
+
+        var rootElement = fixture.find('select[name=\'group.profession\']');
+        expect(rootElement.length).toBe(1);
+
+        rootElement.val('Doctor').trigger('change');
+
+        var groupCity = fixture.find('select[name=\'group.city\']');
+        expect(groupCity.length).toBe(1);
+
+    });
+
 });

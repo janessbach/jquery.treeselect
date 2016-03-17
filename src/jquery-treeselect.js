@@ -1,5 +1,5 @@
 /*
- * jQuery Dynamic Tree Selection - Version 1.0.0
+ * jQuery Dynamic Tree Selection
  *
  * Source: https://bitbucket.org/jessbach/jquery.tree.selection
  *
@@ -45,7 +45,9 @@
         this.dependencyList = this.options.data.dependencyList || [];
 
         this.dependencyMap = [];
-        this.dependencyList.forEach(function(node) { self.dependencyMap[node.key] = node; });
+        this.dependencyList.forEach(function(node) {
+            self.dependencyMap[node.key] = node;
+        });
         this.init();
     }
 
@@ -81,13 +83,13 @@
                 });
                 oldNodeDependencies.forEach(function(node) {
                     if (node !== nodeToReplace) {
-                        self.element.find('*[name=' + node.elementName +']').parent().remove();
+                        self.element.find(selectorName(node)).parent().remove();
                     }
                 });
             }
             if (newNode) {
                 this.activeNodes.push(newNode);
-                self.element.find('*[name=' + newNode.elementName +']').parent().after(self.drawDependentNodes(newNode));
+                self.element.find(selectorName(newNode)).parent().after(self.drawDependentNodes(newNode));
             }
         }
     };
@@ -172,6 +174,10 @@
             }
         }
         return traverseTree([node.key], []);
+    };
+
+    var selectorName = function(node) {
+        return '*[name=\'' + node.elementName + '\']';
     };
 
     Array.prototype.flatten = function() {
