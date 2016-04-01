@@ -152,4 +152,68 @@ describe("jquery-treeselect", function () {
 
     });
 
+    it("should also be able to determine the correct node by value if not distinct.", function() {
+
+        json = {
+            "groupKey": "group.profession",
+            "translations" : {
+                "select.default" : "Please select",
+                "group.profession" : "Profession",
+                "group.city" : "City"
+            },
+            "dependencyList": [{
+                "key": 1,
+                "elementName": "group.profession",
+                "values": ["Doctor"],
+                "dependencies": [3],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 2,
+                "elementName": "group.profession",
+                "values": ["Engineer"],
+                "dependencies": [4],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 3,
+                "elementName": "group.city",
+                "values": ["Amsterdam", "Berlin"],
+                "dependencies": [],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 4,
+                "elementName": "group.city",
+                "values": ["Amsterdam", "Berlin"],
+                "dependencies": [5],
+                "required": true,
+                "typ": "select"
+            }, {
+                "key": 5,
+                "elementName": "group.mobile",
+                "values": ["Apple", "Samsung"],
+                "dependencies": [],
+                "required": true,
+                "typ": "select"
+            }]
+        };
+
+        fixture.treeSelect({"data" : json});
+
+        var rootElement = fixture.find('select[name=\'group.profession\']');
+        expect(rootElement.length).toBe(1);
+
+        rootElement.val('Engineer').trigger('change');
+
+        var groupCity = fixture.find('select[name=\'group.city\']');
+        expect(groupCity.length).toBe(1);
+
+        groupCity.val('Berlin').trigger('change');
+
+        var groupMobile = fixture.find('select[name=\'group.mobile\']');
+        expect(groupMobile.length).toBe(1);
+
+    });
+
 });

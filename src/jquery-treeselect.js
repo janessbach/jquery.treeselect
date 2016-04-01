@@ -5,7 +5,7 @@
  *
  * © 2016 by Elisa Baum <baum@imoveit.de>, Jan Essbach <essbach@imoveit.de>
  */
-(function($, window, document, undefined){
+(function($, window, document, undefined) {
 
     var pluginName = "treeSelect",
         defaults = {
@@ -52,13 +52,15 @@
     }
 
     DynamicSelectTree.prototype.init = function() {
-        var rootValues = this.byElementName(this.groupKey).map(function(node) { return node.values; }).flatten();
-        return this.element.append(this.drawNode(this.options.selectType, this.groupKey, rootValues, true));
+        var rootNodes = this.byElementName(this.groupKey);
+        var rootIds = rootNodes.map(function(node) { return node.key; }).flatten();
+        var rootValues = rootNodes.map(function(node) { return node.values; }).flatten();
+        return this.element.append(this.drawNode(this.options.selectType, this.groupKey, rootValues, true, rootIds));
     };
 
-    DynamicSelectTree.prototype.drawNode = function(type, elementName, values, required) {
+    DynamicSelectTree.prototype.drawNode = function(type, elementName, values, required, nodeIds) {
         if (type === this.options.selectType) {
-            return this.createSelect(elementName, values, required);
+            return this.createSelect(elementName, values, required, nodeIds);
         } else if (type === this.options.inputType) {
             return this.createInput(elementName, required);
         } else if (type === this.options.uploadType) {
@@ -69,7 +71,7 @@
     DynamicSelectTree.prototype.drawDependentNodes = function(node) {
         var self = this;
         return this.groupedDependencyValues(node).map(function(gdv) {
-            return self.drawNode(gdv.type, gdv.elementName, gdv.values, gdv.required);
+            return self.drawNode(gdv.type, gdv.elementName, gdv.values, gdv.required, gdv.nodeIds);
         });
     };
 
@@ -94,7 +96,7 @@
         }
     };
 
-    DynamicSelectTree.prototype.createSelect = function(elementName, values, required) {
+    DynamicSelectTree.prototype.createSelect = function(elementName, values, required, nodeIds) {
         var self = this;
         var select = $('<select/>')
             .append($('<option value="-1" selected>' + (this.translations['select.default'] || '') + '</option>'))
@@ -105,7 +107,7 @@
                 var selectedValue = $(this).val();
                 self.onChange(
                     selectedValue,
-                    self.byValue(selectedValue, elementName),
+                    self.byValue(selectedValue, elementName, nodeIds),
                     self.filterNodes(self.activeNodes, elementName)
                 );
             });
@@ -142,10 +144,11 @@
         var names = nodeDependencies.map(function(node) { return node.elementName; });
         return names.unique().map(function(elementName) {
             var nodes    = nodeDependencies.filter(function(node) { return node.elementName === elementName; });
+            var nodeIds  = nodeDependencies.map(function(node) { return node.key; }).flatten();
             var values   = nodes.map(function(node) { return node.values; }).flatten();
             var type     = nodes.map(function(node) { return node.typ; });
             var required = nodes.map(function(node) { return node.required; }).reduce(function(a, b) { return a || b; });
-            return {'elementName': elementName, 'values': values, 'type': type[0], 'required' : required};
+            return {'elementName': elementName, 'nodeIds' : nodeIds, 'values': values, 'type': type[0], 'required' : required};
         });
     };
 
@@ -153,9 +156,9 @@
         return this.dependencyList.filter(function(node) { return node.elementName === elementName; });
     };
 
-    DynamicSelectTree.prototype.byValue = function(value, elementName) {
+    DynamicSelectTree.prototype.byValue = function(value, elementName, nodeIds) {
         return this.dependencyList.filter(function(node) {
-            return node.elementName === elementName && $.inArray(value, node.values) > -1;
+            return node.elementName === elementName && $.inArray(value, node.values) > -1 && $.inArray(node.key, nodeIds) > -1;
         })[0];
     };
 
