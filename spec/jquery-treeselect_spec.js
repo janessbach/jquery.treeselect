@@ -216,4 +216,20 @@ describe("jquery-treeselect", function () {
 
     });
 
+    it("should be able to render the select values with given comparator", function () {
+
+        var reverseCompare = function stringComparison(a, b) { return (a === b) ? 0 : (a < b) ? 1 : -1; };
+
+        fixture.treeSelect({"data" : json, "comparator" : reverseCompare });
+
+        var rootElement = fixture.find('*[name=profession]');
+        expect(rootElement.length).toBe(1);
+
+        expect(rootElement.find('option').length).toBe(4);
+
+        expect($(rootElement.find('option')[1]).val()).toBe("Engineer");
+        expect($(rootElement.find('option')[2]).val()).toBe("Doctor");
+        expect($(rootElement.find('option')[3]).val()).toBe("Designer");
+    });
+
 });

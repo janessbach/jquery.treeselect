@@ -17,7 +17,8 @@
             selectClass         : 'webform__select',
             uploadClass         : 'upload',
             formElementClass    : 'formelement',
-            data                : undefined
+            data                : undefined,
+            comparator          : function stringComparison(a, b) { return (a === b) ? 0 : (a > b) ? 1 : -1; }
         };
 
     $.fn[pluginName] = function(options) {
@@ -32,7 +33,6 @@
         var self = this;
         this.element = $(element);
         this.options = $.extend({}, defaults, options);
-
         this.options.data = this.options.data || this.element.data('src');
         if (this.options.data === undefined) {
             console.log('please provide a valid dataset for' + element + " needed by plugin" + pluginName);
@@ -131,7 +131,7 @@
     };
 
     DynamicSelectTree.prototype.createOptions = function(values) {
-        return values.sort().map(function(value) { return $('<option/>').text(value).val(value); });
+        return values.sort(this.options.comparator).map(function(value) { return $('<option/>').text(value).val(value); });
     };
 
     DynamicSelectTree.prototype.filterNodes = function(nodes, elementName) {
