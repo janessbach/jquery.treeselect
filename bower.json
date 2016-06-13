@@ -4,14 +4,7 @@
     "./src/jquery-treeselect.js"
   ],
   "authors": [
-    {
-      "name": "Jan Essbach",
-      "email": "essbach@imoveit.de"
-    },
-    {
-      "name": "Elisa Baum",
-      "email": "baum@imoveit.de"
-    }
+     "nemo-dev@springer.com"
   ],
   "ignore": [
     ".idea",
@@ -30,7 +23,5 @@
   "devDependencies": {
     "jasmine": "2.4.1",
     "jasmine-jquery": "2.0.0"
-  },
-  "homepage": "https://github.com/springernature/nemo-jquery-treeselect",
-  "version": "1.0.5"
+  }
 }
