@@ -1,5 +1,5 @@
 {
-  "name": "nemo-jquey-treeselect",
+  "name": "nemo-jquery-treeselect",
   "main": [
     "./src/jquery-treeselect.js"
   ],
