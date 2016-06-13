@@ -1,5 +1,5 @@
 {
-  "name": "nemo-jquery-treeselect",
+  "name": "nemo-jquey-treeselect",
   "main": [
     "./src/jquery-treeselect.js"
   ],
@@ -30,5 +30,7 @@
   "devDependencies": {
     "jasmine": "2.4.1",
     "jasmine-jquery": "2.0.0"
-  }
+  },
+  "homepage": "https://github.com/springernature/nemo-jquery-treeselect",
+  "version": "1.0.5"
 }
