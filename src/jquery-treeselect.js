@@ -18,6 +18,7 @@
             uploadClass         : 'upload',
             formElementClass    : 'formelement',
             data                : undefined,
+            defaultValue        : -1,
             comparator          : function stringComparison(a, b) { return (a === b) ? 0 : (a > b) ? 1 : -1; }
         };
 
@@ -99,7 +100,7 @@
     DynamicSelectTree.prototype.createSelect = function(elementName, values, required, nodeIds) {
         var self = this;
         var select = $('<select/>')
-            .append($('<option value="-1" selected>' + (this.translations['select.default'] || '') + '</option>'))
+            .append($('<option value="' + this.options.defaultValue + '" selected>' + (this.translations['select.default'] || '') + '</option>'))
             .append(this.createOptions(values))
             .addClass(this.options.selectClass)
             .attr('name', elementName)
