@@ -92,7 +92,7 @@
             }
             if (newNode) {
                 this.activeNodes.push(newNode);
-                self.element.find(selectorName(newNode)).parent().after(self.drawDependentNodes(newNode));
+                self.element.find(selectorName(newNode)).parent().after(self.drawDependentNodes(newNode)).trigger('update');
             }
         }
     };
