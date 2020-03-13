@@ -1,0 +1,31 @@
+{
+  "name": "nemo-jquery-treeselect",
+  "version": "1.0.0",
+  "description": "jQuery TreeSelect Plugin =========================",
+  "main": "./src/jquery-treeselect.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine --config=spec/support/jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/springernature/nemo-jquery-treeselect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/springernature/nemo-jquery-treeselect/issues"
+  },
+  "homepage": "https://github.com/springernature/nemo-jquery-treeselect#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.99.0",
+    "jasmine-jquery": "^2.1.1",
+    "jsdom": "^16.2.1"
+  }
+}

@@ -1,9 +1,22 @@
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const dom = new JSDOM();
+
+global.document = dom.window.document;
+global.window = dom.window;
+
+var $ = require("jquery");
+global.jQuery = global.$ = $;
+
+require("jasmine-jquery");
+require("../src/jquery-treeselect");
+
 describe("jquery-treeselect", function () {
 
     var fixture, json;
 
     beforeEach(function () {
-        loadFixtures('fixtures.html');
+        setFixtures('<div id="my-fixture"></div>');
         fixture = $('#my-fixture');
         json = {
             "groupKey": "profession",
